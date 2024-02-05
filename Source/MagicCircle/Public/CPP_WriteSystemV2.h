@@ -20,7 +20,7 @@ public:
 	ACPP_WriteSystemV2();
 
 	// 入力座標を取得
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Input)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Input)
 	FVector2D Input2D = FVector2D(0.0f, 0.0f);
 
 	// 入力角度を取得
@@ -38,6 +38,10 @@ public:
 	// 魔法陣展開中か
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
 	bool IsOpenedCircle = false;
+
+	// マウス操作か
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
+	bool IsMouse = true;
 
 protected:
 	// Called when the game starts or when spawned
@@ -57,6 +61,8 @@ protected:
 
 	// Axis Input 呼び出し
 	void EventAxis(const FInputActionValue& Value);
+
+	float NormalizeAngle(float AngleInDegrees);
 
 private:	
 	// 入力リスト

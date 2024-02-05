@@ -8,6 +8,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "MagicDictionary.h"
+#include <cmath>
 
 class UInputMappingContext;
 
@@ -76,11 +77,22 @@ void ACPP_WriteSystemV2::PressedAxis(const FInputActionValue& Value) {
 
 	// Vector2D入力
 	auto v = Value.Get<FVector2D>();
-	Input2D.X = FMath::Clamp(v.X, -1, 1);
-	Input2D.Y = -FMath::Clamp(v.Y, -1, 1);
-	
-	//UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%f, %f"), Input2D.X, Input2D.Y), true, true, FColor::Cyan, 10.0f, TEXT("None"));
+	if (IsMouse) {
+		Input2D.X = FMath::Clamp(Input2D.X + v.X / 10.0f, -1, 1);
+		Input2D.Y = FMath::Clamp(Input2D.Y - v.Y / 10.0f, -1, 1);
 
+	}
+	else {
+		Input2D.X = FMath::Clamp(v.X, -1, 1);
+		Input2D.Y = -FMath::Clamp(v.Y, -1, 1);
+	}
+
+	float Length = Input2D.Size();
+	if (Length > 1.0f) {
+		Input2D = Input2D / Length;
+	}
+	// UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%f, %f"), Length), true, true, FColor::Cyan, 10.0f, TEXT("None"));
+	
 	auto r = FMath::Atan2(Input2D.Y, Input2D.X);
 	if (r < 0) {
 		r = r + 2 * PI;
@@ -101,6 +113,20 @@ void ACPP_WriteSystemV2::PressedAxis(const FInputActionValue& Value) {
 	// Axis Input Value
 	//UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("X:%f Y:%f"), Input2D.X, Input2D.Y), true, true, FColor::Cyan, 10.0f, TEXT("None"));
 }
+float ACPP_WriteSystemV2::NormalizeAngle(float AngleInDegrees)
+{
+	const float MinAngle = -180.0f; // 正規化したい範囲の最小値
+	const float MaxAngle = 180.0f; // 正規化したい範囲の最大値
+
+	// 入力角度を指定された範囲にマッピングする
+	float NormalizedAngle = (AngleInDegrees - MinAngle) / (MaxAngle - MinAngle);
+	NormalizedAngle = FMath::Clamp(NormalizedAngle, 0.0f, 1.0f);
+
+	// -1から1の範囲にマッピングする
+	NormalizedAngle = 2.0f * NormalizedAngle - 1.0f;
+
+	return NormalizedAngle;
+}
 
 void ACPP_WriteSystemV2::PressedTriggerLeft_Implementation(const FInputActionValue& Value) {
 
@@ -110,7 +136,7 @@ void ACPP_WriteSystemV2::PressedTriggerLeft_Implementation(const FInputActionVal
 	IsOpenedCircle = true;
 
 	// 入力開始
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Open Circle")), true, true, FColor::Cyan, 10.0f, TEXT("None"));
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Open Magic Circle")), true, true, FColor::Cyan, 10.0f, TEXT("None"));
 
 	// 入力リスト初期化
 	AngleList.Empty();
@@ -118,6 +144,8 @@ void ACPP_WriteSystemV2::PressedTriggerLeft_Implementation(const FInputActionVal
 
 	// 方向保存初期化
 	AllAngleFlag = EAngle::Nutral;
+
+	Input2D = FVector2D(0, 0);
 }
 
 void ACPP_WriteSystemV2::ReleasedTriggerLeft_Implementation() {
@@ -239,7 +267,9 @@ void ACPP_WriteSystemV2::ExecuteAngleInput() {
 
 void ACPP_WriteSystemV2::ReleasedAxis() {
 	NowInputAngle = EAngle::Nutral;
-	Input2D = FVector2D(0, 0);
+	if (!IsMouse) {
+		Input2D = FVector2D(0, 0);
+	}
 
 	// 入力タイマーリセット
 	GetWorldTimerManager().ClearTimer(InputTimerHandle);
