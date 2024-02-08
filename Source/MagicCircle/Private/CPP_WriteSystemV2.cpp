@@ -78,8 +78,8 @@ void ACPP_WriteSystemV2::PressedAxis(const FInputActionValue& Value) {
 	// Vector2D“ü—Í
 	auto v = Value.Get<FVector2D>();
 	if (IsMouse) {
-		Input2D.X = FMath::Clamp(Input2D.X + v.X / 10.0f, -1, 1);
-		Input2D.Y = FMath::Clamp(Input2D.Y - v.Y / 10.0f, -1, 1);
+		Input2D.X = FMath::Clamp(Input2D.X + v.X / MouseSpeedDown, -1, 1);
+		Input2D.Y = FMath::Clamp(Input2D.Y - v.Y / MouseSpeedDown, -1, 1);
 
 	}
 	else {
@@ -166,6 +166,13 @@ void ACPP_WriteSystemV2::ReleasedTriggerLeft_Implementation() {
 	
 	EnumText = StaticEnum<EAngle>()->GetDisplayValueAsText(Magic);
 	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Magic:%s"), *EnumText.ToString() ), true, true, FColor::Cyan, 10.0f, TEXT("None"));
+
+	if (Magic != EMagicName::None) {
+		ExecuteMasic(Magic);
+	}
+}
+
+void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName) {
 
 }
 

@@ -8,7 +8,7 @@ UENUM(BlueprintType)
 enum class EMagicName : uint8
 {
 	None,
-	Triangle,
-	ReverseTriangle,
-	Circle,
+	Fire,
+	Ice,
+	Thander,
 };

@@ -13,8 +13,25 @@ TArray<FMagicElement> MagicDictionary::MagicList;
 
 void MagicDictionary::Initialize() {
 	MagicList = {
-		{EMagicName::Triangle, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}}},
-		{EMagicName::Triangle, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown}}},
+		// 三角形
+		{EMagicName::Fire, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
+		{EMagicName::Fire, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown}, {EAngle::Up}}},
+		{EMagicName::Fire, {{EAngle::RightDown},{EAngle::Up},{EAngle::LeftDown}, {EAngle::RightDown}}},
+		{EMagicName::Fire, {{EAngle::RightDown},{EAngle::LeftDown},{EAngle::Up}, {EAngle::RightDown}}},
+		{EMagicName::Fire, {{EAngle::LeftDown},{EAngle::Up},{EAngle::RightDown}, {EAngle::LeftDown}}},
+		{EMagicName::Fire, {{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up}, {EAngle::LeftDown}}},
+
+		// 逆三角形
+		{EMagicName::Ice, {{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
+		{EMagicName::Ice, {{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}}},
+		{EMagicName::Ice, {{EAngle::RightUp},{EAngle::Down},{EAngle::LeftUp}, {EAngle::RightUp}}},
+		{EMagicName::Ice, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::Down}, {EAngle::RightUp}}},
+		{EMagicName::Ice, {{EAngle::LeftUp},{EAngle::Down},{EAngle::RightUp}, {EAngle::LeftUp}}},
+		{EMagicName::Ice, {{EAngle::LeftUp},{EAngle::RightUp},{EAngle::Down}, {EAngle::LeftUp}}},
+
+		// イナズマ形
+		{EMagicName::Thander, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}}},
+		{EMagicName::Thander, {{EAngle::Down},{EAngle::Right},{EAngle::Left}, {EAngle::Up}}},
 	};
 }
 

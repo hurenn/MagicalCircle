@@ -35,13 +35,13 @@ public:
 	// Lトリガー入力終了
 	void ReleasedTriggerLeft();
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Magic")
+	// 魔法発動
+	void ExecuteMasic(EMagicName MagicName);
+
 	// 魔法陣展開中か
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
 	bool IsOpenedCircle = false;
-
-	// マウス操作か
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
-	bool IsMouse = true;
 
 protected:
 	// Called when the game starts or when spawned
@@ -63,6 +63,14 @@ protected:
 	void EventAxis(const FInputActionValue& Value);
 
 	float NormalizeAngle(float AngleInDegrees);
+
+	// マウス操作か
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
+	bool IsMouse = true;
+
+	// マウス速度減速
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
+	float MouseSpeedDown = 30.0f;
 
 private:	
 	// 入力リスト
