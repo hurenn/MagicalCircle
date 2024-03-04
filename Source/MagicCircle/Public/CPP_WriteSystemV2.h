@@ -70,7 +70,7 @@ protected:
 
 	// マウス速度減速
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
-	float MouseSpeedDown = 30.0f;
+	float MouseSpeedDown = 20.0f;
 
 private:	
 	// 入力リスト
