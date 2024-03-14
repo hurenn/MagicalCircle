@@ -4,6 +4,6 @@
 #include "Magics/MagicBase.h"
 #include "Kismet/KismetSystemLibrary.h"
 
-void UMagicBase::Execute() {
+void AMagicBase::Execute() {
 	UKismetSystemLibrary::PrintString(this, TEXT("Default Magic"), true, true, FLinearColor::Red, 5.f);
 }

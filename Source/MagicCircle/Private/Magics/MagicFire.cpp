@@ -4,6 +4,6 @@
 #include "Magics/MagicFire.h"
 #include "Kismet/KismetSystemLibrary.h"
 
-void UMagicFire::Execute() {
+void AMagicFire::Execute() {
 	UKismetSystemLibrary::PrintString(this, TEXT("Fire"), true, true, FLinearColor::Red, 5.f);
 }

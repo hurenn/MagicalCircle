@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class MAGICCIRCLE_API UMagicFire : public UMagicBase
+class MAGICCIRCLE_API AMagicFire : public AMagicBase
 {
 	GENERATED_BODY()
 	

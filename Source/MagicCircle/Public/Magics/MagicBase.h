@@ -4,14 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "UObject/NoExportTypes.h"
+#include "GameFrameWork/Actor.h"
 #include "MagicBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class MAGICCIRCLE_API UMagicBase : public UObject
+class MAGICCIRCLE_API AMagicBase : public AActor
 {
 	GENERATED_BODY()
 protected:
