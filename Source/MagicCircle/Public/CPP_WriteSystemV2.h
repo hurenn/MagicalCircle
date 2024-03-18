@@ -72,6 +72,9 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
 	float MouseSpeedDown = 20.0f;
 
+	// •¶š—ñ‚©‚ç‹ó”’‚ğíœ‚·‚é
+	FString RemoveWhiteSpace(FString str);
+
 private:	
 	// “ü—ÍƒŠƒXƒg
 	TArray<EAngle> AngleList;

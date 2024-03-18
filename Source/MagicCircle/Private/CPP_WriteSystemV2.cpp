@@ -2,6 +2,7 @@
 
 
 #include "CPP_WriteSystemV2.h"
+#include "Magics/MagicBase.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/InputComponent.h"
@@ -173,7 +174,43 @@ void ACPP_WriteSystemV2::ReleasedTriggerLeft_Implementation() {
 }
 
 void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName) {
+	FString MAGIC_PATH = "/Game/ThirdPerson/Blueprints/Magics/";
+	FString MagicType = "BP_Magic" + RemoveWhiteSpace(*StaticEnum<EMagicName>()->GetDisplayValueAsText(MagicName).ToString());
 
+	// BPクラス名作成
+	FString MagicPath = FString::Printf(TEXT("%s%s.%s_C"),
+		*MAGIC_PATH, *MagicType, *MagicType);
+
+	if (MagicPath.IsEmpty()) {
+		UKismetSystemLibrary::PrintString(this, TEXT("GetClassError"));
+		return;
+	}
+	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s"), *MagicPath), true, true, FColor::Cyan, 10.0f, TEXT("None"));
+
+	// パスからBPクラスを取得
+	UClass* BPClass = LoadClass<AMagicBase>(nullptr, *MagicPath);
+	if (!BPClass) {
+		UKismetSystemLibrary::PrintString(this, TEXT("Not Found Magic Class"));
+		return;
+	}
+
+	// 取得したクラスのオブジェクト作成
+	AMagicBase* Magic = GetWorld()->SpawnActor<AMagicBase>(BPClass);
+
+	// Transformセット
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(this->GetWorld(), 0);
+	FTransform PlayerTransform = PlayerPawn->GetActorTransform();
+	Magic->SetActorTransform(PlayerTransform);
+}
+
+FString ACPP_WriteSystemV2::RemoveWhiteSpace(FString str) {
+	FString result;
+	for (char c : str) {
+		if (c != ' ') {
+			result += c;
+		}
+	}
+	return result;
 }
 
 void ACPP_WriteSystemV2::SetAngle(double angle) {
