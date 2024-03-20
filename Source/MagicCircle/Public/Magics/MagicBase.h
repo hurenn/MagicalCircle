@@ -16,7 +16,7 @@ class MAGICCIRCLE_API AMagicBase : public AActor
 	GENERATED_BODY()
 protected:
 	// 使用者
-	ACharacter* User;
+	ACharacter* MagicUser;
 
 	// 発動先座標
 	FVector Target;
@@ -24,4 +24,11 @@ protected:
 public:
 	// 発動する魔法
 	virtual void Execute();
+
+	// 使用者設定
+	void SetMagicUser(ACharacter* user);
+
+	// 使用者取得
+	UFUNCTION(BlueprintCallable)
+	ACharacter* GetMagicUser();
 };

@@ -29,9 +29,22 @@ void MagicDictionary::Initialize() {
 		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::Down},{EAngle::RightUp}, {EAngle::LeftUp}}},
 		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::RightUp},{EAngle::Down}, {EAngle::LeftUp}}},
 
-		// イナズマ形
+		// イナズマ
 		{EMagicName::Thunder, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}}},
 		{EMagicName::Thunder, {{EAngle::Down},{EAngle::Right},{EAngle::Left}, {EAngle::Up}}},
+
+		// 逆イナズマ
+
+		// 波動拳
+
+		// 逆波動拳
+
+		// 円（説明では二重丸）
+
+		// 三重円（説明では四重丸）
+
+		// 直線（8方向）
+
 	};
 }
 

@@ -185,7 +185,7 @@ void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName) {
 		UKismetSystemLibrary::PrintString(this, TEXT("GetClassError"));
 		return;
 	}
-	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s"), *MagicPath), true, true, FColor::Cyan, 10.0f, TEXT("None"));
+	//UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("%s"), *MagicPath), true, true, FColor::Cyan, 10.0f, TEXT("None"));
 
 	// パスからBPクラスを取得
 	UClass* BPClass = LoadClass<AMagicBase>(nullptr, *MagicPath);
@@ -201,6 +201,9 @@ void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName) {
 	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(this->GetWorld(), 0);
 	FTransform PlayerTransform = PlayerPawn->GetActorTransform();
 	Magic->SetActorTransform(PlayerTransform);
+
+	// 誰が使用したか
+	Magic->SetMagicUser(UGameplayStatics::GetPlayerCharacter(this->GetWorld(), 0));
 }
 
 FString ACPP_WriteSystemV2::RemoveWhiteSpace(FString str) {

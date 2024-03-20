@@ -2,8 +2,14 @@
 
 
 #include "Magics/MagicBase.h"
-#include "Kismet/KismetSystemLibrary.h"
 
 void AMagicBase::Execute() {
-	UKismetSystemLibrary::PrintString(this, TEXT("Default Magic"), true, true, FLinearColor::Red, 5.f);
+}
+
+void AMagicBase::SetMagicUser(ACharacter* user) {
+	MagicUser = user;
+}
+
+ACharacter* AMagicBase::GetMagicUser() {
+	return MagicUser;
 }
