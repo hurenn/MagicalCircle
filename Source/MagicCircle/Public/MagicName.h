@@ -9,6 +9,8 @@ enum class EMagicName : uint8
 {
 	None,
 	FireShot,
+	WaterShot,
+	FireTornado,
 	IceTornado,
 	Thunder,
 };
