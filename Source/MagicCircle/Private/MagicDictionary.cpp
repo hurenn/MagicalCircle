@@ -13,6 +13,7 @@ TArray<FMagicElement> MagicDictionary::MagicList;
 
 void MagicDictionary::Initialize() {
 	MagicList = {
+
 		// 三角形
 		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
 		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown}, {EAngle::Up}}},
@@ -29,11 +30,14 @@ void MagicDictionary::Initialize() {
 		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::Down},{EAngle::RightUp}, {EAngle::LeftUp}}},
 		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::RightUp},{EAngle::Down}, {EAngle::LeftUp}}},
 
+		// 三角重ね
+		{EMagicName::Annihilation, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up},{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}}},
+
 		// イナズマ
 		{EMagicName::Thunder, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}}},
-		{EMagicName::Thunder, {{EAngle::Down},{EAngle::Right},{EAngle::Left}, {EAngle::Up}}},
 
 		// 逆イナズマ
+		{EMagicName::ThunderTornado, {{EAngle::Down},{EAngle::Right},{EAngle::Left}, {EAngle::Up}}},
 
 		// 波動拳
 		{EMagicName::WaterShot, {{EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
@@ -42,10 +46,15 @@ void MagicDictionary::Initialize() {
 		{EMagicName::FireShot, {{EAngle::Down}, {EAngle::LeftDown}, {EAngle::Left}}},
 
 		// 円（説明では二重丸）
+		//{EMagicName::Barrier, {{EAngle::Circle}}},
+		{EMagicName::Barrier, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
+		{EMagicName::Barrier, {{EAngle::Down},{EAngle::RightDown},{EAngle::Right},{EAngle::RightUp},{EAngle::Up},{EAngle::LeftUp},{EAngle::Left},{EAngle::LeftDown},{EAngle::Down}}},
 
 		// 三重円（説明では四重丸）
 
 		// 直線（8方向）
+
+		// A~Z(書き順固定)
 
 	};
 }

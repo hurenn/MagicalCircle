@@ -31,4 +31,8 @@ public:
 	// 使用者取得
 	UFUNCTION(BlueprintCallable)
 	ACharacter* GetMagicUser();
+
+	// 魔法レベル
+	UPROPERTY(EditAnywhere)
+	int MagicLevel;
 };
