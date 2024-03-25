@@ -41,9 +41,11 @@ void MagicDictionary::Initialize() {
 
 		// 波動拳
 		{EMagicName::WaterShot, {{EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
+		{EMagicName::WaterShot, {{EAngle::RightDown}, {EAngle::Right}}},
 
 		// 逆波動拳
 		{EMagicName::FireShot, {{EAngle::Down}, {EAngle::LeftDown}, {EAngle::Left}}},
+		{EMagicName::FireShot, {{EAngle::LeftDown}, {EAngle::Left}}},
 
 		// 円（説明では二重丸）
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
@@ -66,6 +68,8 @@ EMagicName MagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 		Element.Progress = 0;
 		Element.Score.Empty();
 	}
+	// 発動する魔法スタック
+	FMagicElement MagicStack;
 
 	// 入力リストを端から調べる
 
@@ -73,23 +77,23 @@ EMagicName MagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 	for (EAngle Angle : AngleList)
 	{
 		//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, (TEXT("Angle:%s"), *StaticEnum<EAngle>()->GetDisplayValueAsText(Angle).ToString()));
-		GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Angle:%s"), *StaticEnum<EAngle>()->GetDisplayValueAsText(Angle).ToString()));
+		//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Angle:%s"), *StaticEnum<EAngle>()->GetDisplayValueAsText(Angle).ToString()));
 
-		// 入力リストを端から調べる
+		// 成立している魔法が無いか端から確認
 		for (FMagicElement& Element : MagicDictionary::MagicList)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("%s"), *StaticEnum<EMagicName>()->GetDisplayValueAsText(Element.Name).ToString()));
-			GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("NowProgress:%d"), Element.Progress));
+			//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("%s"), *StaticEnum<EMagicName>()->GetDisplayValueAsText(Element.Name).ToString()));
+			//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("NowProgress:%d"), Element.Progress));
 
-			// 既に失敗している見本を除外
-			if (Element.Progress < 0) {
-				GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Skip")));
+			// 既に成功・失敗している魔法をスキップ
+			if (Element.Progress < 0 || Element.Progress >= Element.AngleList.Num()) {
+				//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Skip")));
 				continue;
 			}
 
-			// 現在で引っかかっているか確認
+			// 次の入力が許容範囲内か確認
 			EInputScore result = GetInputScore(Element.AngleList[Element.Progress], Angle);
-			GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Score:%s"), *StaticEnum<EInputScore>()->GetDisplayValueAsText(result).ToString()));
+			//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Score:%s"), *StaticEnum<EInputScore>()->GetDisplayValueAsText(result).ToString()));
 			if (result != EInputScore::Failed) {
 				Element.Score.Add((int)result);
 				Element.Progress++;
@@ -97,23 +101,46 @@ EMagicName MagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 				// 最後まで入力が到達した場合
 				// TODO:セーフの時はリストが伸びるから不適切
 				if (Element.Progress >= Element.AngleList.Num()) {
-					GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Complete")));
-					return Element.Name;
+					//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Complete")));
+					
+					// 画数が大きければ置換
+					// 画数が同じなら綺麗に描けていれば置換
+					if (MagicStack.AngleList.IsEmpty()) {
+						MagicStack = Element;
+					}else if (Element.AngleList.Num() > MagicStack.AngleList.Num()) {
+						MagicStack = Element;
+					}else if (Element.AngleList.Num() == MagicStack.AngleList.Num()) {
+						int ElementScore = 0, StackScore = 0;
+						for (int score : Element.Score) {
+							ElementScore += score;
+						}
+						for (int score : MagicStack.Score) {
+							StackScore += score;
+						}
+
+						if (ElementScore >= StackScore) {
+							MagicStack = Element;
+						}
+					}
 				}
 
-				GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Progress")));
+				//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Progress")));
 				continue;
 			}
 
-			// 最初の入力の場合、ここで終了
-			if (Element.Progress <= 0) {
+			//===================================================
+			// 許容判定
+
+			// 最初の入力の場合、ここで失敗
+			// NOTE: 2画目以降で直前の判定で許容であれば、続行
+			if(Element.Progress <= 0) {
+
 				Element.Progress = -1;
-
-				GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Failed")));
+				//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Failed")));
 				continue;
 			}
 
-			// 一つ手前で引っかかっているか確認
+			// 一つ手前の判定で許容範囲に収まっているか確認
 			result = GetInputScore(Element.AngleList[Element.Progress - 1], Angle);
 			if (result != EInputScore::Failed) {
 				// より少ないスコアだった場合上書き
@@ -121,21 +148,19 @@ EMagicName MagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 					Element.Score[Element.Progress - 1] = (int)result;
 				}
 
-
-				GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Continue")));
+				//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Continue")));
 				continue;
 			}
 
-			// 入力失敗
+			// 失敗判定
 			Element.Progress = -1;
-			GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Miss")));
+			//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Miss")));
 			continue;
 		}
 	}
 
-	// 含まれていれば魔法名を返す
-
-	return EMagicName::None;
+	// 魔法名を返す
+	return MagicStack.Name;
 }
 
 /// <summary>
