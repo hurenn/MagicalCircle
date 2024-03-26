@@ -15,20 +15,20 @@ void MagicDictionary::Initialize() {
 	MagicList = {
 
 		// éOäpå`
-		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
 		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown}, {EAngle::Up}}},
+		/*{EMagicName::FireTornado, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
 		{EMagicName::FireTornado, {{EAngle::RightDown},{EAngle::Up},{EAngle::LeftDown}, {EAngle::RightDown}}},
 		{EMagicName::FireTornado, {{EAngle::RightDown},{EAngle::LeftDown},{EAngle::Up}, {EAngle::RightDown}}},
 		{EMagicName::FireTornado, {{EAngle::LeftDown},{EAngle::Up},{EAngle::RightDown}, {EAngle::LeftDown}}},
-		{EMagicName::FireTornado, {{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up}, {EAngle::LeftDown}}},
+		{EMagicName::FireTornado, {{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up}, {EAngle::LeftDown}}},*/
 
 		// ãtéOäpå`
-		{EMagicName::IceTornado, {{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
 		{EMagicName::IceTornado, {{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}}},
+		/*{EMagicName::IceTornado, {{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
 		{EMagicName::IceTornado, {{EAngle::RightUp},{EAngle::Down},{EAngle::LeftUp}, {EAngle::RightUp}}},
 		{EMagicName::IceTornado, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::Down}, {EAngle::RightUp}}},
 		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::Down},{EAngle::RightUp}, {EAngle::LeftUp}}},
-		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::RightUp},{EAngle::Down}, {EAngle::LeftUp}}},
+		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::RightUp},{EAngle::Down}, {EAngle::LeftUp}}},*/
 
 		// éOäpèdÇÀ
 		{EMagicName::Annihilation, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up},{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}}},
@@ -41,11 +41,15 @@ void MagicDictionary::Initialize() {
 
 		// îgìÆåù
 		{EMagicName::WaterShot, {{EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
-		{EMagicName::WaterShot, {{EAngle::RightDown}, {EAngle::Right}}},
 
-		// ãtîgìÆåù
-		{EMagicName::FireShot, {{EAngle::Down}, {EAngle::LeftDown}, {EAngle::Left}}},
-		{EMagicName::FireShot, {{EAngle::LeftDown}, {EAngle::Left}}},
+		// é‹îMîgìÆåù
+		{EMagicName::FireShot, {{EAngle::Left}, {EAngle::LeftDown}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
+
+		// ÉCÉiÉYÉ}îgìÆåù
+		{EMagicName::ThunderShot, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
+
+		// ó≥ä™ê˘ïóãr
+		{EMagicName::RushTornado, {{EAngle::Down}, {EAngle::LeftDown}, {EAngle::Left}}},
 
 		// â~Åiê‡ñæÇ≈ÇÕìÒèdä€Åj
 		//{EMagicName::Barrier, {{EAngle::Circle}}},

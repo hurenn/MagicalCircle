@@ -10,6 +10,8 @@ enum class EMagicName : uint8
 	None,
 	FireShot,
 	WaterShot,
+	ThunderShot,
+	RushTornado,
 	FireTornado,
 	IceTornado,
 	ThunderTornado,
