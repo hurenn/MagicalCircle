@@ -22,12 +22,14 @@ enum class EMagicName : uint8
 	Barrier,
 	// –³“G–hŒä
 	InvincibleBarrier,
+	Recovery,
+	HealingArea,
 	WarpUp,
-	WarpUpRight,
+	WarpRightUp,
 	WarpRight,
-	WarpDownRight,
+	WarpRightDown,
 	WarpDown,
-	WarpDownLeft,
+	WarpLeftDown,
 	WarpLeft,
-	WarpUpLeft,
+	WarpLeftUp,
 };

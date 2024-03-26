@@ -51,6 +51,12 @@ void MagicDictionary::Initialize() {
 		// 竜巻旋風脚
 		{EMagicName::RushTornado, {{EAngle::Down}, {EAngle::LeftDown}, {EAngle::Left}}},
 
+		//　即時回復
+		{EMagicName::Recovery, {{EAngle::RightUp},{EAngle::Right},{EAngle::Down},{EAngle::Left},{EAngle::LeftUp}}},
+
+		//　回復エリア
+		{EMagicName::HealingArea, {{EAngle::Up},{EAngle::Down},{EAngle::Left},{EAngle::Right}}},
+
 		// 円（説明では二重丸）
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
 		{EMagicName::Barrier, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
@@ -59,6 +65,14 @@ void MagicDictionary::Initialize() {
 		// 三重円（説明では四重丸）
 
 		// 直線（8方向）
+		{EMagicName::WarpUp, {{EAngle::Up}}},
+		{EMagicName::WarpRightUp, {{EAngle::RightUp}}},
+		{EMagicName::WarpRight, {{EAngle::Right}}},
+		{EMagicName::WarpRightDown, {{EAngle::RightDown}}},
+		{EMagicName::WarpDown, {{EAngle::Down}}},
+		{EMagicName::WarpLeftDown, {{EAngle::LeftDown}}},
+		{EMagicName::WarpLeft, {{EAngle::Left}}},
+		{EMagicName::WarpLeftUp, {{EAngle::LeftUp}}},
 
 		// A~Z(書き順固定)
 
