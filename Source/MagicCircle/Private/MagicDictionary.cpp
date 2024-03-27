@@ -16,22 +16,25 @@ void MagicDictionary::Initialize() {
 
 		// 三角形
 		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown}, {EAngle::Up}}},
-		/*{EMagicName::FireTornado, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
-		{EMagicName::FireTornado, {{EAngle::RightDown},{EAngle::Up},{EAngle::LeftDown}, {EAngle::RightDown}}},
+		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
+		/*{EMagicName::FireTornado, {{EAngle::RightDown},{EAngle::Up},{EAngle::LeftDown}, {EAngle::RightDown}}},
 		{EMagicName::FireTornado, {{EAngle::RightDown},{EAngle::LeftDown},{EAngle::Up}, {EAngle::RightDown}}},
 		{EMagicName::FireTornado, {{EAngle::LeftDown},{EAngle::Up},{EAngle::RightDown}, {EAngle::LeftDown}}},
 		{EMagicName::FireTornado, {{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up}, {EAngle::LeftDown}}},*/
 
 		// 逆三角形
 		{EMagicName::IceTornado, {{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}}},
-		/*{EMagicName::IceTornado, {{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
-		{EMagicName::IceTornado, {{EAngle::RightUp},{EAngle::Down},{EAngle::LeftUp}, {EAngle::RightUp}}},
+		{EMagicName::IceTornado, {{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
+		/*{EMagicName::IceTornado, {{EAngle::RightUp},{EAngle::Down},{EAngle::LeftUp}, {EAngle::RightUp}}},
 		{EMagicName::IceTornado, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::Down}, {EAngle::RightUp}}},
 		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::Down},{EAngle::RightUp}, {EAngle::LeftUp}}},
 		{EMagicName::IceTornado, {{EAngle::LeftUp},{EAngle::RightUp},{EAngle::Down}, {EAngle::LeftUp}}},*/
 
 		// 三角重ね
 		{EMagicName::Annihilation, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up},{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}}},
+		{EMagicName::Annihilation, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::Up},{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}}},
+		{EMagicName::Annihilation, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown},{EAngle::Up},{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
+		{EMagicName::Annihilation, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::Up},{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
 
 		// イナズマ
 		{EMagicName::Thunder, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}}},
