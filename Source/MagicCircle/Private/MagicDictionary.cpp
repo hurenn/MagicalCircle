@@ -68,14 +68,14 @@ void MagicDictionary::Initialize() {
 		// 三重円（説明では四重丸）
 
 		// 直線（8方向）
-		{EMagicName::WarpUp, {{EAngle::Up}}},
-		{EMagicName::WarpRightUp, {{EAngle::RightUp}}},
-		{EMagicName::WarpRight, {{EAngle::Right}}},
-		{EMagicName::WarpRightDown, {{EAngle::RightDown}}},
-		{EMagicName::WarpDown, {{EAngle::Down}}},
-		{EMagicName::WarpLeftDown, {{EAngle::LeftDown}}},
-		{EMagicName::WarpLeft, {{EAngle::Left}}},
-		{EMagicName::WarpLeftUp, {{EAngle::LeftUp}}},
+		//{EMagicName::WarpUp, {{EAngle::Up}}},
+		//{EMagicName::WarpRightUp, {{EAngle::RightUp}}},
+		//{EMagicName::WarpRight, {{EAngle::Right}}},
+		//{EMagicName::WarpRightDown, {{EAngle::RightDown}}},
+		//{EMagicName::WarpDown, {{EAngle::Down}}},
+		//{EMagicName::WarpLeftDown, {{EAngle::LeftDown}}},
+		//{EMagicName::WarpLeft, {{EAngle::Left}}},
+		//{EMagicName::WarpLeftUp, {{EAngle::LeftUp}}},
 
 		// A~Z(書き順固定)
 
