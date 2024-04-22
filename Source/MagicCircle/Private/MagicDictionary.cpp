@@ -4,14 +4,10 @@
 #include "MagicDictionary.h"
 #include "Engine/Engine.h"
 
-MagicDictionary::MagicDictionary()
-{
-}
-
 // リスト初期化
-TArray<FMagicElement> MagicDictionary::MagicList;
+TArray<FMagicElement> UMagicDictionary::MagicList;
 
-void MagicDictionary::Initialize() {
+void UMagicDictionary::Initialize() {
 	MagicList = {
 
 		// 三角形
@@ -82,9 +78,9 @@ void MagicDictionary::Initialize() {
 	};
 }
 
-EMagicName MagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
+EMagicName UMagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 	// リスト初期化
-	for (FMagicElement& Element : MagicDictionary::MagicList)
+	for (FMagicElement& Element : UMagicDictionary::MagicList)
 	{
 		Element.Progress = 0;
 		Element.Score.Empty();
@@ -101,7 +97,7 @@ EMagicName MagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 		//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("Angle:%s"), *StaticEnum<EAngle>()->GetDisplayValueAsText(Angle).ToString()));
 
 		// 成立している魔法が無いか端から確認
-		for (FMagicElement& Element : MagicDictionary::MagicList)
+		for (FMagicElement& Element : UMagicDictionary::MagicList)
 		{
 			//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("%s"), *StaticEnum<EMagicName>()->GetDisplayValueAsText(Element.Name).ToString()));
 			//GEngine->AddOnScreenDebugMessage(-1, 50.f, FColor::Yellow, *FString::Printf(TEXT("NowProgress:%d"), Element.Progress));
@@ -190,7 +186,7 @@ EMagicName MagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 /// <param name="SampleAngle">正しい方向</param>
 /// <param name="InputAngle">入力された方向</param>
 /// <returns>スコア</returns>
-EInputScore MagicDictionary::GetInputScore(const EAngle SampleAngle, const EAngle InputAngle) {
+EInputScore UMagicDictionary::GetInputScore(const EAngle SampleAngle, const EAngle InputAngle) {
 	switch (SampleAngle) {
 		// todo:各方向で判定作成
 

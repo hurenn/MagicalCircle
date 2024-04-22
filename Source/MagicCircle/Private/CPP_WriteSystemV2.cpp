@@ -38,7 +38,7 @@ void ACPP_WriteSystemV2::BeginPlay()
 	SetupInput();
 
 	// –‚–@«“T‰Šú‰»(ƒŠƒXƒg‚É“o˜^)
-	MagicDictionary::Initialize();
+	UMagicDictionary::Initialize();
 }
 
 void ACPP_WriteSystemV2::SetupInput() {
@@ -163,7 +163,7 @@ void ACPP_WriteSystemV2::ReleasedTriggerLeft_Implementation() {
 	}
 
 	// “ü—ÍƒŠƒXƒg‚ğ“n‚·
-	EMagicName Magic = MagicDictionary::GetMagic(AngleList);
+	EMagicName Magic = UMagicDictionary::GetMagic(AngleList);
 	
 	EnumText = StaticEnum<EAngle>()->GetDisplayValueAsText(Magic);
 	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Magic:%s"), *EnumText.ToString() ), true, true, FColor::Cyan, 10.0f, TEXT("None"));
