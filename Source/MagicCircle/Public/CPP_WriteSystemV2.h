@@ -37,7 +37,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Magic")
 	// –‚–@”­“®
-	void ExecuteMasic(EMagicName MagicName);
+	void ExecuteMasic(EMagicName MagicName, float ScoreRate);
 
 	// –‚–@w“WŠJ’†‚©
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)

@@ -163,17 +163,27 @@ void ACPP_WriteSystemV2::ReleasedTriggerLeft_Implementation() {
 	}
 
 	// 入力リストを渡す
-	EMagicName Magic = UMagicDictionary::GetMagic(AngleList);
+	FMagicElement Magic = UMagicDictionary::GetMagic(AngleList);
 	
-	EnumText = StaticEnum<EAngle>()->GetDisplayValueAsText(Magic);
+	EnumText = StaticEnum<EAngle>()->GetDisplayValueAsText(Magic.Name);
 	UKismetSystemLibrary::PrintString(this, FString::Printf(TEXT("Magic:%s"), *EnumText.ToString() ), true, true, FColor::Cyan, 10.0f, TEXT("None"));
 
-	if (Magic != EMagicName::None) {
-		ExecuteMasic(Magic);
+	if (Magic.Name != EMagicName::None) {
+		int ScoreSum = 0;
+		float ScoreResult = 0;
+		
+		// スコア合計値を算出
+		for (int Score : Magic.Score) {
+			ScoreSum += Score;
+		}
+
+		ScoreResult = (float)ScoreSum / (float)(Magic.Score.Num() * (int)EInputScore::Great);
+
+		ExecuteMasic(Magic.Name, ScoreResult);
 	}
 }
 
-void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName) {
+void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName, float ScoreRate) {
 	FString MAGIC_PATH = "/Game/ThirdPerson/Blueprints/Magics/";
 	FString MagicType = "BP_Magic" + RemoveWhiteSpace(*StaticEnum<EMagicName>()->GetDisplayValueAsText(MagicName).ToString());
 

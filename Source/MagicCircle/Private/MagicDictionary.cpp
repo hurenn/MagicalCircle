@@ -78,7 +78,7 @@ void UMagicDictionary::Initialize() {
 	};
 }
 
-EMagicName UMagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
+FMagicElement UMagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 	// ƒŠƒXƒg‰Šú‰»
 	for (FMagicElement& Element : UMagicDictionary::MagicList)
 	{
@@ -177,7 +177,7 @@ EMagicName UMagicDictionary::GetMagic( const TArray<EAngle>& AngleList) {
 	}
 
 	// –‚–@–¼‚ğ•Ô‚·
-	return MagicStack.Name;
+	return MagicStack;
 }
 
 /// <summary>

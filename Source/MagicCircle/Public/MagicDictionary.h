@@ -25,7 +25,7 @@ public:
 	static TArray<FMagicElement> MagicList;
 
 	// “ü—ÍƒŠƒXƒg‚©‚çæ“¾
-	static EMagicName GetMagic( const TArray<EAngle>& AngleList );
+	static FMagicElement GetMagic( const TArray<EAngle>& AngleList );
 
 	// ‰Šú“o˜^
 	static void Initialize();
