@@ -20,7 +20,7 @@ class MAGICCIRCLE_API AMagicBase : public AActor
 protected:
 
 	// 使用者
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(BlueprintReadWrite)
 	ACharacter* MagicUser;
 
 	// 発動先座標
@@ -48,10 +48,6 @@ public:
 	// 使用者設定
 	UFUNCTION(BlueprintCallable)
 	void SetMagicUser(ACharacter* user);
-
-	// 使用者取得
-	UFUNCTION(BlueprintCallable)
-	ACharacter* GetMagicUser();
 
 	// 魔法レベル
 	UPROPERTY(EditAnywhere)

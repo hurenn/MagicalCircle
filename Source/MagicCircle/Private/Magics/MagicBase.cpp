@@ -9,7 +9,3 @@ void AMagicBase::Execute() {
 void AMagicBase::SetMagicUser(ACharacter* user) {
 	MagicUser = user;
 }
-
-ACharacter* AMagicBase::GetMagicUser() {
-	return MagicUser;
-}
