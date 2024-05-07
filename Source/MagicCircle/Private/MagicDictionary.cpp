@@ -49,6 +49,7 @@ void UMagicDictionary::Initialize() {
 		{EMagicName::ThunderShot, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
 
 		// ó≥ä™ê˘ïóãr
+		{EMagicName::RushTornado, {{EAngle::Down}, {EAngle::Up}, {EAngle::LeftDown}, {EAngle::RightDown}, {EAngle::Up}}},
 		{EMagicName::RushTornado, {{EAngle::Down}, {EAngle::LeftDown}, {EAngle::Left}}},
 
 		//Å@ë¶éûâÒïú
