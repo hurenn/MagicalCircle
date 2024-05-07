@@ -33,11 +33,11 @@ void UMagicDictionary::Initialize() {
 		{EMagicName::Annihilation, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::Up},{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}}},
 
 		// イナズマ
-		{EMagicName::ThunderTornado, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}}},
-		{EMagicName::ThunderTornado, {{EAngle::Down},{EAngle::Right},{EAngle::Left}, {EAngle::Up}}},
+		{EMagicName::Thunder, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}}},
+		{EMagicName::Thunder, {{EAngle::Down},{EAngle::Right},{EAngle::Left}, {EAngle::Up}}},
 
 		// 落雷
-		{EMagicName::Thunder, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}, {EAngle::Up}}},
+		// {EMagicName::Thunder, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}, {EAngle::Up}}},
 
 		// 波動拳
 		{EMagicName::WaterShot, {{EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
