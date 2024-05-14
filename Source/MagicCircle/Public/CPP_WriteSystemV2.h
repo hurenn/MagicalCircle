@@ -98,7 +98,7 @@ private:
 	bool IsPressed = false;
 
 	// “ü—ÍŠ®—¹‚Ü‚Å‚ÌŽžŠÔ
-	float InputLimitTime = 0.02f;
+	float InputLimitTime = 0.0f;
 
 	// ’¼‘O‚ÉŒv‘ª‚³‚ê‚½ŽžŠÔ
 	float LastSeconds = 0.0;

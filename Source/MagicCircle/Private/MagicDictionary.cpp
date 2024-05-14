@@ -58,6 +58,9 @@ void UMagicDictionary::Initialize() {
 		//　回復エリア
 		{EMagicName::HealingArea, {{EAngle::Up},{EAngle::Down},{EAngle::Left},{EAngle::Right}}},
 
+		// 時間停止
+		{EMagicName::TimeStop, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::RightUp}}},
+
 		// 円（説明では二重丸）
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
 		{EMagicName::Barrier, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},

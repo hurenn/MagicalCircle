@@ -50,6 +50,10 @@ public:
 	void SetMagicUser(ACharacter* user);
 
 	// 魔法レベル
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int MagicLevel;
+
+	// セットアップ
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	void SetUp(ACharacter* User, float ScoreRate, AMagicBase* MagicClass);
 };

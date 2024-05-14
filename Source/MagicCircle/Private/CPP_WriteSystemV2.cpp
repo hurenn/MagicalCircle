@@ -212,8 +212,12 @@ void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName, float
 	FTransform PlayerTransform = PlayerPawn->GetActorTransform();
 	Magic->SetActorTransform(PlayerTransform);
 
+	auto User = UGameplayStatics::GetPlayerCharacter(this->GetWorld(), 0);
+
 	// 誰が使用したか
-	Magic->SetMagicUser(UGameplayStatics::GetPlayerCharacter(this->GetWorld(), 0));
+	// Magic->SetMagicUser(User);
+
+	Magic->SetUp(User, ScoreRate, Magic);
 }
 
 FString ACPP_WriteSystemV2::RemoveWhiteSpace(FString str) {
@@ -276,7 +280,9 @@ void ACPP_WriteSystemV2::OutputAngle(EAngle InputAngle) {
 	}
 
 	// 0.2秒後にコールバック起動するタイマー開始
-	GetWorldTimerManager().SetTimer(InputTimerHandle, this, &ACPP_WriteSystemV2::ExecuteAngleInput, InputLimitTime, false);
+	//GetWorldTimerManager().SetTimer(InputTimerHandle, this, &ACPP_WriteSystemV2::ExecuteAngleInput, InputLimitTime, false);
+
+	ExecuteAngleInput();
 }
 
 // 入力実行

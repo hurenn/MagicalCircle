@@ -9,3 +9,7 @@ void AMagicBase::Execute() {
 void AMagicBase::SetMagicUser(ACharacter* user) {
 	MagicUser = user;
 }
+
+void AMagicBase::SetUp_Implementation(class ACharacter*, float, class AMagicBase*) {
+
+}

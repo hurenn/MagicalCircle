@@ -24,6 +24,8 @@ enum class EMagicName : uint8
 	InvincibleBarrier,
 	Recovery,
 	HealingArea,
+	// ŽžŠÔ’âŽ~
+	TimeStop,
 	WarpUp,
 	WarpRightUp,
 	WarpRight,
