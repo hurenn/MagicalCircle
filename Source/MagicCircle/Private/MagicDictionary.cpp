@@ -61,6 +61,9 @@ void UMagicDictionary::Initialize() {
 		// éûä‘í‚é~
 		{EMagicName::TimeStop, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::RightUp}}},
 
+		// â¡ë¨
+		{EMagicName::Accelerate, {{EAngle::Up},{EAngle::Right},{EAngle::Left},{EAngle::Down}}},
+
 		// â~Åiê‡ñæÇ≈ÇÕìÒèdä€Åj
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
 		{EMagicName::Barrier, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},

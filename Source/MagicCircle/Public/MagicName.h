@@ -26,7 +26,10 @@ enum class EMagicName : uint8
 	HealingArea,
 	// ŽžŠÔ’âŽ~
 	TimeStop,
+	// ‰Á‘¬
+	Accelerate,
 	WarpUp,
+	/*
 	WarpRightUp,
 	WarpRight,
 	WarpRightDown,
@@ -34,4 +37,5 @@ enum class EMagicName : uint8
 	WarpLeftDown,
 	WarpLeft,
 	WarpLeftUp,
+	*/
 };
