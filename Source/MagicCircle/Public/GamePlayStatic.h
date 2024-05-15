@@ -2,15 +2,18 @@
 
 #pragma once
 
-#include "Kismet/BlueprintFunctionLibrary.h"
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "GameplayStatic.generated.h"
 
-/**
- * 
- */
-class MAGICCIRCLE_API GamePlayStatic : UBlueprintFunctionLibrary
+UCLASS()
+class MAGICCIRCLE_API AGameplayStatic : public AActor
 {
-public:
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "GamePlayStatic")
-	static void ExecuteDamage(float damage);
+	GENERATED_BODY()
+	
+public:	
+
+	// ゲームコントローラを使用しているか
+	//UPROPERTY(BlueprintReadWrite)
+	//static bool IsGameController;
 };
