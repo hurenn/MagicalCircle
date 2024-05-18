@@ -28,6 +28,8 @@ enum class EMagicName : uint8
 	TimeStop,
 	// ‰Á‘¬
 	Accelerate,
+	// Œ¸‘¬
+	Decelerate,
 	WarpUp,
 	/*
 	WarpRightUp,

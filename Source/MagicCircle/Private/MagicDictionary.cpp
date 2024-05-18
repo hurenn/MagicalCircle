@@ -12,7 +12,7 @@ void UMagicDictionary::Initialize() {
 
 		// éOäpå`
 		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown}, {EAngle::Up}}},
-		{EMagicName::FireTornado, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
+		//{EMagicName::FireTornado, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}}},
 		/*{EMagicName::FireTornado, {{EAngle::RightDown},{EAngle::Up},{EAngle::LeftDown}, {EAngle::RightDown}}},
 		{EMagicName::FireTornado, {{EAngle::RightDown},{EAngle::LeftDown},{EAngle::Up}, {EAngle::RightDown}}},
 		{EMagicName::FireTornado, {{EAngle::LeftDown},{EAngle::Up},{EAngle::RightDown}, {EAngle::LeftDown}}},
@@ -40,16 +40,19 @@ void UMagicDictionary::Initialize() {
 		// {EMagicName::Thunder, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}, {EAngle::Up}}},
 
 		// îgìÆåù
+		{EMagicName::WaterShot, {{EAngle::Down},{EAngle::LeftUp},{EAngle::RightUp}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
+		{EMagicName::WaterShot, {{EAngle::Down},{EAngle::RightUp},{EAngle::LeftUp}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
 		{EMagicName::WaterShot, {{EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
 
 		// é‹îMîgìÆåù
 		{EMagicName::FireShot, {{EAngle::Left}, {EAngle::LeftDown}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
+		{EMagicName::FireShot, {{EAngle::Up},{EAngle::LeftDown},{EAngle::RightDown}, {EAngle::Up}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
+		//{EMagicName::FireShot, {{EAngle::Up},{EAngle::RightDown},{EAngle::LeftDown}, {EAngle::Up}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
 
 		// ÉCÉiÉYÉ}îgìÆåù
 		{EMagicName::ThunderShot, {{EAngle::Up},{EAngle::Left},{EAngle::Right}, {EAngle::Down}, {EAngle::RightDown}, {EAngle::Right}}},
 
 		// ó≥ä™ê˘ïóãr
-		{EMagicName::RushTornado, {{EAngle::Down}, {EAngle::Up}, {EAngle::LeftDown}, {EAngle::RightDown}, {EAngle::Up}}},
 		{EMagicName::RushTornado, {{EAngle::Down}, {EAngle::LeftDown}, {EAngle::Left}}},
 
 		//Å@ë¶éûâÒïú
@@ -62,7 +65,7 @@ void UMagicDictionary::Initialize() {
 		{EMagicName::TimeStop, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::RightUp}}},
 
 		// â¡ë¨
-		{EMagicName::Accelerate, {{EAngle::Up},{EAngle::Right},{EAngle::Left},{EAngle::Down}}},
+		{EMagicName::Accelerate, {{EAngle::Down}, {EAngle::Up}, {EAngle::LeftDown}, {EAngle::RightDown}, {EAngle::Up}}},
 
 		// â~Åiê‡ñæÇ≈ÇÕìÒèdä€Åj
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
