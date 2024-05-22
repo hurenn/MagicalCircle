@@ -81,11 +81,21 @@ void ACPP_WriteSystemV2::PressedAxis(const FInputActionValue& Value) {
 	if (IsMouse) {
 		Input2D.X = FMath::Clamp(Input2D.X + v.X / MouseSpeedDown, -1, 1);
 		Input2D.Y = FMath::Clamp(Input2D.Y - v.Y / MouseSpeedDown, -1, 1);
-
 	}
 	else {
-		Input2D.X = FMath::Clamp(v.X, -1, 1);
-		Input2D.Y = -FMath::Clamp(v.Y, -1, 1);
+		//Input2D.X = FMath::Clamp(Input2D.X + v.X / StickSpeedDown, -1, 1);
+		//Input2D.Y = FMath::Clamp(Input2D.Y - v.Y / StickSpeedDown, -1, 1);
+
+		float X = FMath::Clamp(v.X, -1, 1);
+		float Y = -FMath::Clamp(v.Y, -1, 1);
+
+		float NowLerp = 0;
+		if (!AngleList.IsEmpty()) {
+			NowLerp = FMath::Lerp(0, StickLerp, FMath::Pow(FVector2D(X, Y).Size(), 20));
+		}
+
+		Input2D.X = FMath::Lerp(X, Input2D.X, NowLerp);
+		Input2D.Y = FMath::Lerp(Y, Input2D.Y, NowLerp);
 	}
 
 	float Length = Input2D.Size();
@@ -100,7 +110,7 @@ void ACPP_WriteSystemV2::PressedAxis(const FInputActionValue& Value) {
 	}
 
 	// 最大入力判定
-	if ( FMath::Abs(Input2D.X) + FMath::Abs(Input2D.Y) < 1.0) {
+	if ( FMath::Abs(Input2D.X) + FMath::Abs(Input2D.Y) < 0.8f) {
 		return;
 	}
 
@@ -142,6 +152,7 @@ void ACPP_WriteSystemV2::PressedTriggerLeft_Implementation(const FInputActionVal
 	// 入力リスト初期化
 	AngleList.Empty();
 	LastInputAngle = EAngle::Nutral;
+	NowInputAngle = EAngle::Nutral;
 
 	// 方向保存初期化
 	AllAngleFlag = EAngle::Nutral;
@@ -181,6 +192,8 @@ void ACPP_WriteSystemV2::ReleasedTriggerLeft_Implementation() {
 
 		ExecuteMasic(Magic.Name, ScoreResult);
 	}
+
+	Input2D = FVector2D(0, 0);
 }
 
 void ACPP_WriteSystemV2::ExecuteMasic_Implementation(EMagicName MagicName, float ScoreRate) {
@@ -235,25 +248,55 @@ void ACPP_WriteSystemV2::SetAngle(double angle) {
 		OutputAngle(EAngle::Right);
 	}
 	else if (angle < 67.5f) {
-		OutputAngle(EAngle::RightDown);
+		if (IsMouse) {
+			OutputAngle(EAngle::RightDown);
+		}
+		else {
+			OutputAngle(EAngle::RightUp);
+		}
 	}
 	else if (angle < 112.5f) {
-		OutputAngle(EAngle::Down);
+		if (IsMouse) {
+			OutputAngle(EAngle::Down);
+		}
+		else {
+			OutputAngle(EAngle::Up);
+		}
 	}
 	else if (angle < 157.5f) {
-		OutputAngle(EAngle::LeftDown);
+		if (IsMouse) {
+			OutputAngle(EAngle::LeftDown);
+		}
+		else {
+			OutputAngle(EAngle::LeftUp);
+		}
 	}
 	else if (angle < 202.5f) {
 		OutputAngle(EAngle::Left);
 	}
 	else if (angle < 247.5f) {
-		OutputAngle(EAngle::LeftUp);
+		if (IsMouse) {
+			OutputAngle(EAngle::LeftUp);
+		}
+		else {
+			OutputAngle(EAngle::LeftDown);
+		}
 	}
 	else if (angle < 292.5f) {
-		OutputAngle(EAngle::Up);
+		if (IsMouse) {
+			OutputAngle(EAngle::Up);
+		}
+		else {
+			OutputAngle(EAngle::Down);
+		}
 	}
 	else {
-		OutputAngle(EAngle::RightUp);
+		if (IsMouse) {
+			OutputAngle(EAngle::RightUp);
+		}
+		else {
+			OutputAngle(EAngle::RightDown);
+		}
 	}
 }
 
@@ -280,9 +323,9 @@ void ACPP_WriteSystemV2::OutputAngle(EAngle InputAngle) {
 	}
 
 	// 0.2秒後にコールバック起動するタイマー開始
-	//GetWorldTimerManager().SetTimer(InputTimerHandle, this, &ACPP_WriteSystemV2::ExecuteAngleInput, InputLimitTime, false);
+	GetWorldTimerManager().SetTimer(InputTimerHandle, this, &ACPP_WriteSystemV2::ExecuteAngleInput, InputLimitTime, false);
 
-	ExecuteAngleInput();
+	//ExecuteAngleInput();
 }
 
 // 入力実行

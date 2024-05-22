@@ -65,14 +65,14 @@ void UMagicDictionary::Initialize() {
 		{EMagicName::TimeStop, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::RightUp}}},
 
 		// 加速
-		{EMagicName::Accelerate, {{EAngle::Down}, {EAngle::Up}, {EAngle::LeftDown}, {EAngle::RightDown}, {EAngle::Up}}},
+		{EMagicName::Accelerate, {{EAngle::Down}, {EAngle::Up}, {EAngle::Left}, {EAngle::Right}, {EAngle::Up}}},
 
-		// 円（説明では二重丸）
+		// 円
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
-		{EMagicName::Barrier, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
-		{EMagicName::Barrier, {{EAngle::Down},{EAngle::RightDown},{EAngle::Right},{EAngle::RightUp},{EAngle::Up},{EAngle::LeftUp},{EAngle::Left},{EAngle::LeftDown},{EAngle::Down}}},
+		{EMagicName::Shield, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
+		{EMagicName::Shield, {{EAngle::Down},{EAngle::RightDown},{EAngle::Right},{EAngle::RightUp},{EAngle::Up},{EAngle::LeftUp},{EAngle::Left},{EAngle::LeftDown},{EAngle::Down}}},
 
-		// 三重円（説明では四重丸）
+		// 二重円
 
 		// 直線（8方向）
 		//{EMagicName::WarpUp, {{EAngle::Up}}},

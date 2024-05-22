@@ -72,6 +72,18 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
 	float MouseSpeedDown = 20.0f;
 
+	// スティック最大速度
+	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
+	//float StickSpeedDown = 5.0f;
+	
+	// スティック移動補間
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
+	float StickLerp = 0.7f;
+
+	// 入力完了までの時間
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = Input)
+	float InputLimitTime = 0.05f;
+
 	// 文字列から空白を削除する
 	FString RemoveWhiteSpace(FString str);
 
@@ -96,9 +108,6 @@ private:
 
 	// press状態を管理
 	bool IsPressed = false;
-
-	// 入力完了までの時間
-	float InputLimitTime = 0.0f;
 
 	// 直前に計測された時間
 	float LastSeconds = 0.0;

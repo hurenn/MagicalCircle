@@ -41,14 +41,14 @@ struct FMagicElement{
 public:
 	// 名前
 	UPROPERTY(EditAnywhere)
-	EMagicName Name;
+	EMagicName Name = EMagicName::None;
 
 	// 入力リスト
 	UPROPERTY(EditAnywhere)
-	TArray<EAngle> AngleList;
+	TArray<EAngle> AngleList = {};
 
 	// 入力スコアリスト
-	TArray<int> Score;
+	TArray<int> Score = {};
 
 	// 入力進捗
 	int Progress = 0;

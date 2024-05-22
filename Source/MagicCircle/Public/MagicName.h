@@ -19,9 +19,9 @@ enum class EMagicName : uint8
 	// ‰Š+•X
 	Annihilation,
 	// ’Z‚¢–hŒä
-	Barrier,
+	Shield,
 	// –³“G–hŒä
-	InvincibleBarrier,
+	Barrier,
 	Recovery,
 	HealingArea,
 	// ŠÔ’â~
