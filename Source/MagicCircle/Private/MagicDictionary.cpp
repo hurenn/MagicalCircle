@@ -69,9 +69,12 @@ void UMagicDictionary::Initialize() {
 
 		// â~
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
-		{EMagicName::Shield, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
-		{EMagicName::Shield, {{EAngle::Down},{EAngle::RightDown},{EAngle::Right},{EAngle::RightUp},{EAngle::Up},{EAngle::LeftUp},{EAngle::Left},{EAngle::LeftDown},{EAngle::Down}}},
+		//{EMagicName::Shield, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
+		//{EMagicName::Shield, {{EAngle::Down},{EAngle::RightDown},{EAngle::Right},{EAngle::RightUp},{EAngle::Up},{EAngle::LeftUp},{EAngle::Left},{EAngle::LeftDown},{EAngle::Down}}},
 
+		// V
+		{EMagicName::MirrorShield, {{EAngle::LeftUp}, {EAngle::Down}, {EAngle::RightUp}}},
+		// 
 		// ìÒèdâ~
 
 		// íºê¸Åi8ï˚å¸Åj

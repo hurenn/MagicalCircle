@@ -20,6 +20,8 @@ enum class EMagicName : uint8
 	Annihilation,
 	// 短い防御
 	Shield,
+	// ミラーシールド
+	MirrorShield,
 	// 無敵防御
 	Barrier,
 	Recovery,
