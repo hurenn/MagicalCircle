@@ -79,7 +79,7 @@ void UMagicDictionary::Initialize() {
 		{EMagicName::Barrier, {{EAngle::Left},{EAngle::Right}}},
 
 		// V
-		{EMagicName::MirrorShield, {{EAngle::LeftUp}, {EAngle::Down}, {EAngle::RightUp}}},
+		{EMagicName::MirrorShield, {{EAngle::Left},{EAngle::Right},{EAngle::Down},{EAngle::Up}}},
 		// 
 		// ìÒèdâ~
 
