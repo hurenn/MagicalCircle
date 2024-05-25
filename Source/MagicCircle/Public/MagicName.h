@@ -18,12 +18,12 @@ enum class EMagicName : uint8
 	Thunder,
 	// 炎+氷
 	Annihilation,
-	// 短い防御
-	Shield,
 	// ミラーシールド
 	MirrorShield,
-	// 無敵防御
+	// バリア
 	Barrier,
+	// 無限バリア
+	UnlimitBarrier,
 	Recovery,
 	HealingArea,
 	// 時間停止
@@ -32,6 +32,8 @@ enum class EMagicName : uint8
 	Accelerate,
 	// 減速
 	Decelerate,
+	// 透明化
+	Invisible,
 	WarpUp,
 	/*
 	WarpRightUp,

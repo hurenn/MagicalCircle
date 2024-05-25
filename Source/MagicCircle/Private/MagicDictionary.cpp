@@ -64,13 +64,19 @@ void UMagicDictionary::Initialize() {
 		// éûä‘í‚é~
 		{EMagicName::TimeStop, {{EAngle::RightUp},{EAngle::LeftUp},{EAngle::RightDown},{EAngle::LeftDown},{EAngle::RightUp}}},
 
-		// â¡ë¨
+		// è„ñÓàÛ
 		{EMagicName::Accelerate, {{EAngle::Down}, {EAngle::Up}, {EAngle::Left}, {EAngle::Right}, {EAngle::Up}}},
+
+		// â∫ñÓàÛ
+		{EMagicName::Decelerate, {{EAngle::Up}, {EAngle::Down}, {EAngle::Left}, {EAngle::Right}, {EAngle::Down}}},
 
 		// â~
 		//{EMagicName::Barrier, {{EAngle::Circle}}},
-		//{EMagicName::Shield, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
-		//{EMagicName::Shield, {{EAngle::Down},{EAngle::RightDown},{EAngle::Right},{EAngle::RightUp},{EAngle::Up},{EAngle::LeftUp},{EAngle::Left},{EAngle::LeftDown},{EAngle::Down}}},
+		{EMagicName::Invisible, {{EAngle::Down},{EAngle::LeftDown},{EAngle::Left},{EAngle::LeftUp},{EAngle::Up},{EAngle::RightUp},{EAngle::Right},{EAngle::RightDown},{EAngle::Down}}},
+		{EMagicName::Invisible, {{EAngle::Down},{EAngle::RightDown},{EAngle::Right},{EAngle::RightUp},{EAngle::Up},{EAngle::LeftUp},{EAngle::Left},{EAngle::LeftDown},{EAngle::Down}}},
+
+		// èÇ
+		{EMagicName::Barrier, {{EAngle::Left},{EAngle::Right}}},
 
 		// V
 		{EMagicName::MirrorShield, {{EAngle::LeftUp}, {EAngle::Down}, {EAngle::RightUp}}},
