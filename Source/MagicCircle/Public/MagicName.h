@@ -8,32 +8,38 @@ UENUM(BlueprintType)
 enum class EMagicName : uint8
 {
 	None,
-	FireShot,
-	WaterShot,
-	ThunderShot,
-	RushTornado,
-	FireTornado,
+	FireTornado = 1,
 	IceTornado,
-	ThunderTornado,
-	Thunder,
-	// 炎+氷
-	Annihilation,
-	// ミラーシールド
-	MirrorShield,
-	// バリア
-	Barrier,
-	// 無限バリア
-	UnlimitBarrier,
-	Recovery,
-	HealingArea,
-	// 時間停止
-	TimeStop,
 	// 加速
 	Accelerate,
 	// 減速
 	Decelerate,
+	Thunder,
+	ThunderShot,
+	RushTornado,
+	WaterShot,
+	FireShot,
+	//ThunderTornado,
+	// バリア
+	Barrier,
+	// ミラーシールド
+	MirrorShield,
+	Recovery,
+	HealingArea,
 	// 透明化
 	Invisible,
+	// 時間停止
+	TimeStop,
+	// 炎+氷
+	Annihilation,
+	// ポータル
+	// Portal,
+	// チャージ
+	// Charge,
+	// 無限バリア
+	// UnlimitBarrier,
+	//ランダム
+	// Random,
 	WarpUp,
 	/*
 	WarpRightUp,
