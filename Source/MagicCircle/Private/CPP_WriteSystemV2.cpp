@@ -323,9 +323,9 @@ void ACPP_WriteSystemV2::OutputAngle(EAngle InputAngle) {
 	}
 
 	// 0.2秒後にコールバック起動するタイマー開始
-	GetWorldTimerManager().SetTimer(InputTimerHandle, this, &ACPP_WriteSystemV2::ExecuteAngleInput, InputLimitTime, false);
+	//GetWorldTimerManager().SetTimer(InputTimerHandle, this, &ACPP_WriteSystemV2::ExecuteAngleInput, InputLimitTime, false);
 
-	//ExecuteAngleInput();
+	ExecuteAngleInput();
 }
 
 // 入力実行
